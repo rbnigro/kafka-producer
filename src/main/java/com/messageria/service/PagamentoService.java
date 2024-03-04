@@ -16,6 +16,7 @@ public class PagamentoService {
 	public String integrarPagamento(PagamentoDTO pagamentoDTO) {
 		
 		try {
+			System.out.println("Service");
 			pagamentoRequestProducer.sendMessage(pagamentoDTO);
 			return "Sucesso";
 		} catch (JsonProcessingException e) {

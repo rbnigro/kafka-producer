@@ -1,5 +1,6 @@
 package com.messageria.api;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.messageria.dto.PagamentoDTO;
 import com.messageria.producer.PagamentoRequestProducer;
+import com.messageria.service.PagamentoService;
 
 @RestController
 @RequestMapping("/pagamentos")
@@ -18,25 +20,28 @@ public class PagamentoAPI {
 
 	private PagamentoRequestProducer pagamentoRequestProducer;
 	
-	//@Autowired
-	//private PagamentoService pagamentoService;
+	@Autowired
+	private PagamentoService pagamentoService;
 	
-	public PagamentoAPI(PagamentoRequestProducer pagamentoRequestProducer) {
-		this.pagamentoRequestProducer = pagamentoRequestProducer;
-	}
-
+//	public PagamentoAPI(PagamentoRequestProducer pagamentoRequestProducer) {
+//		this.pagamentoRequestProducer = pagamentoRequestProducer;
+//	}
 
 	@PostMapping("/pagar")
-	ResponseEntity<String> pagar(@RequestBody PagamentoDTO pagamentoDTO) {
+	String pagar(@RequestBody PagamentoDTO pagamentoDTO) {
+		return pagamentoService.integrarPagamento(pagamentoDTO);		
+	}
+	
+	@GetMapping("/pagar2")
+	String  pagar2() {
 		try {
-			pagamentoRequestProducer.sendMessage(pagamentoDTO);
-			return ResponseEntity.ok("Message sent to the topic");
-		} catch (JsonProcessingException e) {
+			System.out.println("opa");
+			pagamentoRequestProducer.sendMessage("Hello Woeld");
+			return "Message sent to the topic";
+		} catch (Exception e) {
 			e.printStackTrace();
-			return (ResponseEntity<String>) ResponseEntity.badRequest();
+			return (e.getMessage());
 		}
-
-		// return pagamentoService.integrarPagamento(pagamentoDTO);		
 	}
 	
 	@GetMapping("/publish")
