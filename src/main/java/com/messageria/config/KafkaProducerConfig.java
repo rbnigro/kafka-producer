@@ -27,23 +27,19 @@ public class KafkaProducerConfig {
 
 		Map<String, Object> properties = kafkaProperties.buildProducerProperties();
 		return new DefaultKafkaProducerFactory<>(properties);
-		// Retorna um objeto
 	}
 	
 	@Bean
 	KafkaTemplate<String, String> kafkaTemplate() {
-		System.out.println("KafkaTemplate");
 		return new KafkaTemplate<>(producerFactory());
 	}
 	
 	@Bean
 	NewTopic pagamentoRequestTopicBuilder() {
-		System.out.println("Topic: " + pagamentoRequestTopicV1);
 		return TopicBuilder
 				.name(pagamentoRequestTopicV1) 
 				.partitions(1)
 				.replicas(1)
 				.build();
-		// Retonra um objeto
 	}
 }

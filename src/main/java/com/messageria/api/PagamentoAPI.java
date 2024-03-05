@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.messageria.dto.PagamentoDTO;
-import com.messageria.producer.PagamentoRequestProducer;
 import com.messageria.service.PagamentoService;
 
 @RestController
@@ -25,4 +23,9 @@ public class PagamentoAPI {
 	String pagar(@RequestBody PagamentoDTO pagamentoDTO) {
 		return pagamentoService.integrarPagamento(pagamentoDTO);		
 	}
+	
+//	@GetMapping("/publish")
+//	ResponseEntity<String> publish(@RequestParam("message") String message) {
+//		return 
+//	}
 }

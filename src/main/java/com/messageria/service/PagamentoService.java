@@ -16,10 +16,13 @@ public class PagamentoService {
 	public String integrarPagamento(PagamentoDTO pagamentoDTO) {
 		
 		try {
-			System.out.println("Service");
-			return pagamentoRequestProducer.sendMessage(pagamentoDTO);
+			return pagamentoRequestProducer.sendPagamentoDTO(pagamentoDTO);
 		} catch (JsonProcessingException e) {
 			return "Erro ao solicitar Pagamento" + e.getMessage();
 		} 
+	}
+	
+	public String sendMessage(String message) {
+		return "";
 	}
 }

@@ -25,7 +25,7 @@ public class PagamentoRequestProducer {
 	@Autowired
 	private KafkaTemplate<String, String> kafkaTemplate;
 	
-	public String sendMessage(PagamentoDTO pagamentoDTO) throws JsonProcessingException {
+	public String sendPagamentoDTO(PagamentoDTO pagamentoDTO) throws JsonProcessingException {
 		String conteudo = objectMapper.writeValueAsString(pagamentoDTO);
 		LOGGER.info("%s", conteudo);
 		kafkaTemplate.send(pagamentoRequestTopicV1, conteudo);
