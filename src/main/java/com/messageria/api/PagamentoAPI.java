@@ -18,45 +18,11 @@ import com.messageria.service.PagamentoService;
 @RequestMapping("/pagamentos")
 public class PagamentoAPI {
 
-	private PagamentoRequestProducer pagamentoRequestProducer;
-	
 	@Autowired
 	private PagamentoService pagamentoService;
 	
-//	public PagamentoAPI(PagamentoRequestProducer pagamentoRequestProducer) {
-//		this.pagamentoRequestProducer = pagamentoRequestProducer;
-//	}
-
 	@PostMapping("/pagar")
 	String pagar(@RequestBody PagamentoDTO pagamentoDTO) {
 		return pagamentoService.integrarPagamento(pagamentoDTO);		
-	}
-	
-	@GetMapping("/pagar2")
-	String  pagar2() {
-		try {
-			System.out.println("opa");
-			pagamentoRequestProducer.sendMessage("Hello Woeld");
-			return "Message sent to the topic";
-		} catch (Exception e) {
-			e.printStackTrace();
-			return (e.getMessage());
-		}
-	}
-	
-	@GetMapping("/publish")
-	public ResponseEntity<String> publish(@RequestBody PagamentoDTO pagamentoDTO) {
-		try {
-			pagamentoRequestProducer.sendMessage(pagamentoDTO);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-		return ResponseEntity.ok("Message send");
-	}
-	
-	@GetMapping("/texto")
-	ResponseEntity<String> publish(@RequestParam("message") String message) {
-		pagamentoRequestProducer.sendMessage(message);
-		return ResponseEntity.ok("Message sent to the topic");
 	}
 }

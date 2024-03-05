@@ -17,8 +17,7 @@ public class PagamentoService {
 		
 		try {
 			System.out.println("Service");
-			pagamentoRequestProducer.sendMessage(pagamentoDTO);
-			return "Sucesso";
+			return pagamentoRequestProducer.sendMessage(pagamentoDTO);
 		} catch (JsonProcessingException e) {
 			return "Erro ao solicitar Pagamento" + e.getMessage();
 		} 

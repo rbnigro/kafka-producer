@@ -24,7 +24,7 @@ public class KafkaProducerConfig {
 
 	@Bean
 	ProducerFactory<String, String> producerFactory(){
-		System.out.println("Producer: " + pagamentoRequestTopicV1);
+
 		Map<String, Object> properties = kafkaProperties.buildProducerProperties();
 		return new DefaultKafkaProducerFactory<>(properties);
 		// Retorna um objeto
