@@ -1,11 +1,11 @@
 # kafka-producer
-Kafka Producer
+Utilizando Spring
 
 ## Subir Serviços
 
 ### Iniciar Zookeeper
-cd\kafka\bin\windows
-zookeeper-server-start.bat C:\kafka\config\zookeeper.properties
++ cd\kafka\bin\windows
++ zookeeper-server-start.bat C:\kafka\config\zookeeper.properties
 
 ### Iniciar Kafka
 cd\kafka\bin\windows
