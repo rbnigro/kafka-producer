@@ -1,6 +1,8 @@
 # kafka-producer
 Utilizando Spring
 
+![Mapa Kafka](src/main/resources/images/GraficoKafka.png)
+
 ## Subir Serviços
 
 ### Iniciar Zookeeper
