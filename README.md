@@ -18,7 +18,7 @@ Utilizando Spring
 ### Verificações
 + cd\kafka\bin\windows
 + kafka-topics.bat --bootstrap-server localhost:9092 --describe
-- ou 
+> ou 
 + cd\kafka\bin\windows
 + kafka-topics.bat --bootstrap-server localhost:9092 --list
 
