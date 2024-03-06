@@ -1,13 +1,15 @@
 # kafka-producer
 Kafka Producer
 
-Iniciar Zookeeper
------------------
+##Subir Serviços
+
+###Iniciar Zookeeper
+###-----------------
 cd\kafka\bin\windows
 zookeeper-server-start.bat C:\kafka\config\zookeeper.properties
 
-Iniciar Kafka
--------------
+#Iniciar Kafka
+###---------------
 cd\kafka\bin\windows
 kafka-server-start.bat C:\kafka\config\server.properties
 
