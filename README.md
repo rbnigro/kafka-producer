@@ -32,7 +32,7 @@ kafka-topics.bat --version
 
 Criar Eventos
 --------------
-cd\kafka\bin\windows
+cd\kafka\bin\windows<br>
 kafka-console-producer.bat --topic --broker-list  pagamento.request.topic.v1 --bootstrap-server localhost:9092
 
 Ler Eventos
