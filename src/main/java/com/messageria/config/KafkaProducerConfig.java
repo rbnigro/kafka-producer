@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -21,10 +22,9 @@ public class KafkaProducerConfig {
 	
 	@Value("${spring.kafka.producer.pagamento.request.topic.v1}") 
 	private String pagamentoRequestTopicV1;
-
+	
 	@Bean
 	ProducerFactory<String, String> producerFactory(){
-
 		Map<String, Object> properties = kafkaProperties.buildProducerProperties();
 		return new DefaultKafkaProducerFactory<>(properties);
 	}
@@ -37,7 +37,7 @@ public class KafkaProducerConfig {
 	@Bean
 	NewTopic pagamentoRequestTopicBuilder() {
 		return TopicBuilder
-				.name(pagamentoRequestTopicV1) 
+				.name(pagamentoRequestTopicV1)
 				.partitions(1)
 				.replicas(1)
 				.build();

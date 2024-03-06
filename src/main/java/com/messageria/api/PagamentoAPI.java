@@ -1,5 +1,7 @@
 package com.messageria.api;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,8 @@ import com.messageria.service.PagamentoService;
 @RequestMapping("/pagamentos")
 public class PagamentoAPI {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(PagamentoAPI.class);
+	
 	@Autowired
 	private PagamentoService pagamentoService;
 	
@@ -24,8 +28,11 @@ public class PagamentoAPI {
 		return pagamentoService.integrarPagamento(pagamentoDTO);		
 	}
 	
-//	@GetMapping("/publish")
-//	ResponseEntity<String> publish(@RequestParam("message") String message) {
-//		return 
-//	}
+	@GetMapping("/publish")
+	ResponseEntity<String> publish(@RequestParam("message") String message) {
+		LOGGER.info("%s", "Antes");
+		pagamentoService.sendPublish(message);
+		LOGGER.info("%s", "Depois");
+		return  ResponseEntity.ok("Messge sent: " + message);
+	}
 }

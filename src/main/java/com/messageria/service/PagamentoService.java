@@ -22,7 +22,7 @@ public class PagamentoService {
 		} 
 	}
 	
-	public String sendMessage(String message) {
-		return "";
+	public String sendPublish(String message) {
+		return pagamentoRequestProducer.sendPublish(message);
 	}
 }
